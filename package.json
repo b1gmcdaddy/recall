@@ -6,11 +6,19 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "s:start": "npx supabase start",
+    "s:stop": "npx supabase stop",
+    "s:mig-new": "npx supabase migration new",
+    "s:migrate": "npx supabase migration up",
+    "s:mig:repair": "npx supabase migration repair --status reverted",
+    "s:db:reset": "npx supabase db reset"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/native": "^7.1.8",
+    "@supabase/supabase-js": "^2.78.0",
     "expo": "~54.0.20",
     "expo-constants": "~18.0.10",
     "expo-font": "~14.0.9",

@@ -1,20 +1,21 @@
+import { supabase } from '@/lib/supabase';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
-    Bell,
-    ChevronRight,
-    Edit,
-    HelpCircle,
-    LogOut,
-    Settings,
-    Shield,
-    User,
+  Bell,
+  ChevronRight,
+  Edit,
+  HelpCircle,
+  LogOut,
+  Settings,
+  Shield,
+  User,
 } from 'lucide-react-native';
 import {
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 export default function ProfileScreen() {
@@ -24,6 +25,11 @@ export default function ProfileScreen() {
     { icon: Shield, label: 'Privacy', color: '#ff00ff' },
     { icon: HelpCircle, label: 'Help & Support', color: '#ffaa00' },
   ];
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
+    // The index.tsx auth state listener will handle navigation
+  }
 
   return (
     <View style={styles.container}>
@@ -133,7 +139,7 @@ export default function ProfileScreen() {
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => signOut()}>
             <LinearGradient
               colors={['#ff4444', '#cc0000']}
               style={styles.logoutButton}>
